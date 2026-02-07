@@ -1,0 +1,125 @@
+/* Body & container */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: #0f172a;
+  color: white;
+}
+
+.hidden { display: none; }
+
+.container { padding: 40px; text-align: center; }
+
+select, button, a {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Rekap absensi */
+.rekap {
+  margin-top: 20px;
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 8px;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Overlay opening */
+.opening {
+  position: fixed;
+  inset: 0;
+  background: url('bg.jpeg') center center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.opening::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.opening-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Fade-in judul & subtitle */
+#judulUndangan {
+  font-family: 'Georgia', serif;
+  color: black;
+  font-size: 36px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInCenter 1s forwards 0.3s;
+}
+
+#subJudul {
+  font-family: 'Arial', sans-serif;
+  color: black;
+  font-size: 18px;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInCenter 1s forwards 0.8s;
+}
+
+@keyframes fadeInCenter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tombol overlay fade-in + scale */
+#btnMasuk {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: fadeInButton 1s forwards 1.3s;
+  background-color: #3b82f6;
+  color: white;
+  position: relative;  /* tetap di atas overlay */
+  z-index: 2;
+  transition: background 0.3s;
+}
+
+#btnMasuk:hover { background-color: #2563eb; }
+
+/* Fade-out overlay */
+@keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+/* Konten utama fade-in */
+@keyframes fadeInContent {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container.animate { animation: fadeInContent 1s forwards; }
+
+/* Tombol mute/unmute musik */
+#toggleMusic {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: #3b82f6;
+  color: white;
+  cursor: pointer;
+}

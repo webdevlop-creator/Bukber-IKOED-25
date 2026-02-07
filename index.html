@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bukber Alumni IKOED</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Musik -->
+<audio id="bgMusic" src="bgMusic.mp3" loop></audio>
+
+<!-- Overlay Opening -->
+<div id="opening" class="opening">
+  <div class="opening-content">
+    <h1 id="judulUndangan">Undangan Bukber IKOED</h1>
+    <p id="subJudul">Dear: Seluruh Alumni Mas Tgk Chiek Oemar Diyan</p>
+    <button id="btnMasuk">Buka Undangan</button>
+  </div>
+</div>
+
+<!-- Main Content Hidden -->
+<div class="container hidden" id="mainContent">
+  <h2>Ucapan & Kehadiran</h2>
+  <p>Pilih angkatan lalu isi kehadiran:</p>
+
+  <select id="angkatanSelect">
+    <option value="">-- Pilih Angkatan --</option>
+    <option value="angkatan_25">Alumni 25</option>
+    <option value="angkatan_24">Alumni 24</option>
+    <option value="angkatan_23">Alumni 23</option>
+    <option value="angkatan_22">Alumni 22</option>
+  </select>
+
+  <div id="hadirBox" class="hidden">
+    <button id="btnHadir">Hadir</button>
+    <button id="btnTidakHadir">Tidak Hadir</button>
+  </div>
+
+  <div id="status"></div>
+
+  <div id="rekap" class="rekap hidden">
+    <p>Hadir: <span id="jumlahHadir">0</span></p>
+    <p>Tidak Hadir: <span id="jumlahTidakHadir">0</span></p>
+  </div>
+
+  <h3>Alamat Acara</h3>
+  <p id="alamatAcara">📍 Aula IKOED Banda Aceh</p>
+  <a href="https://maps.app.goo.gl/fYhjVy3XBMQz1u9d8" target="_blank">Lihat di Maps</a>
+
+  <h3>Ucapan</h3>
+  <p>Silahkan tulis ucapanmu di form ini (bisa ditambahkan nanti)</p>
+</div>
+
+<!-- Tombol mute/unmute musik -->
+<button id="toggleMusic">🔊</button>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
