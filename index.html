@@ -52,9 +52,12 @@ display:none;
 }
 
 .section{
-padding:60px 20px;
-background:url('bg2.jpeg') center/cover;
-text-align:center;
+  padding:80px 20px;
+  background:
+    linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
+    url('bg2.jpeg') center/cover;
+  text-align:center;
+  color:white;
 }
 
 .section h2{
@@ -101,10 +104,23 @@ border-radius:10px;
 overflow:hidden;
 }
 
+.section h2{
+  font-family:'Cinzel',serif;
+  font-size:28px;
+  color:#f5d27a;
+  margin-bottom:20px;
+  letter-spacing:1px;
+}
+
 .gallery img{
 width:100%;
 border-radius:10px;
 margin-top:10px;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
@@ -137,6 +153,9 @@ margin-top:10px;
 <div class="section">
   <h2>Lokasi Acara</h2>
   <div class="map">
+    <div style="border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.2); margin-top:20px;">
+  <!-- iframe maps di sini -->
+</div>
     <iframe 
      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d295.2298922176065!2d95.43436780332014!3d5.398052035446534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040404ce6c22577%3A0x9b94c9e20a5ec9ce!2s9CXM%2B7Q2%2C%20Reukih%20Dayah%2C%20Kec.%20Indrapuri%2C%20Kabupaten%20Aceh%20Besar%2C%20Aceh%2023373!5e0!3m2!1sid!2sid!4v1770561527427!5m2!1sid!2sid" 
      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
@@ -148,6 +167,9 @@ margin-top:10px;
 <!-- ABSENSI -->
 <div class="section">
   <h2>Konfirmasi Kehadiran</h2>
+  <p style="margin-bottom:15px;font-weight:500;">
+Silakan konfirmasi kehadiran sesuai angkatan masing-masing
+</p>
 
   <input type="text" id="nama" placeholder="Nama Lengkap">
 
@@ -221,8 +243,15 @@ window.kirimAbsensi = function(){
 }
 
 window.bukaUndangan = function(){
-  document.getElementById("opening").style.display="none";
-  document.getElementById("content").style.display="block";
+  const opening = document.getElementById("opening");
+  opening.style.transition = "opacity 1.2s ease";
+  opening.style.opacity = "0";
+
+  setTimeout(()=>{
+    opening.style.display = "none";
+    document.getElementById("content").style.display = "block";
+    document.getElementById("content").style.animation = "fadeIn 1.5s ease";
+  },1200);
 }
 
 const target = new Date("March 7, 2026 18:50:00").getTime();
