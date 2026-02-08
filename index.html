@@ -3,59 +3,239 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bukber Alumni IKOED</title>
-<link rel="stylesheet" href="style.css" />
+<title>Undangan Bukber IKOED</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+body{background:#f4f4f4;overflow-x:hidden}
+
+/* OPENING */
+#opening{
+height:100vh;
+background:url('ikoed.jpeg') center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+color:#1b1b1b;
+position:fixed;
+width:100%;
+z-index:10;
+}
+#opening h1{
+font-family:Cinzel;
+font-size:32px;
+animation:fade 2s ease forwards;
+opacity:0;
+}
+#opening button{
+margin-top:30px;
+padding:14px 28px;
+background:#2d4a2b;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+@keyframes fade{
+to{opacity:1;transform:translateY(-10px)}
+}
+
+/* CONTENT */
+.content{
+display:none;
+}
+
+.section{
+padding:60px 20px;
+background:url('bg2.jpeg') center/cover;
+text-align:center;
+}
+
+.section h2{
+font-family:Cinzel;
+margin-bottom:20px;
+}
+
+/* countdown */
+.countdown{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:20px;
+}
+.box{
+background:#2d4a2b;
+color:white;
+padding:10px 14px;
+border-radius:6px;
+}
+
+/* absensi */
+input,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button.absen{
+background:#2d4a2b;
+color:white;
+padding:12px;
+border:none;
+border-radius:6px;
+width:100%;
+margin-top:10px;
+}
+
+.map{
+margin-top:20px;
+border-radius:10px;
+overflow:hidden;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+margin-top:10px;
+}
+</style>
 </head>
+
 <body>
 
-<!-- Musik -->
-<audio id="bgMusic" src="bgMusic.mp3" loop></audio>
+<!-- OPENING -->
+<div id="opening">
+  <h1>Undangan Bukber IKOED</h1>
+  <p>Seluruh Alumni Mas Tgk. Chiek Oemar Diyan</p>
+  <button onclick="bukaUndangan()">Buka Undangan</button>
+</div>
 
-<!-- Overlay Opening -->
-<div id="opening" class="opening">
-  <div class="opening-content">
-    <h1 id="judulUndangan">Undangan Bukber IKOED</h1>
-    <p id="subJudul">Dear: Seluruh Alumni Mas Tgk Chiek Oemar Diyan</p>
-    <button id="btnMasuk">Buka Undangan</button>
+<div class="content" id="content">
+
+<!-- HERO -->
+<div class="section">
+  <h2>Buka Puasa Bersama</h2>
+  <p>Sabtu, 07 Maret 2026</p>
+
+  <div class="countdown">
+    <div class="box"><span id="hari"></span> Hari</div>
+    <div class="box"><span id="jam"></span> Jam</div>
+    <div class="box"><span id="menit"></span> Menit</div>
+    <div class="box"><span id="detik"></span> Detik</div>
   </div>
 </div>
 
-<!-- Main Content Hidden -->
-<div class="container hidden" id="mainContent">
-  <h2>Ucapan & Kehadiran</h2>
-  <p>Pilih angkatan lalu isi kehadiran:</p>
+<!-- LOKASI -->
+<div class="section">
+  <h2>Lokasi Acara</h2>
+  <div class="map">
+    <iframe 
+     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d295.2298922176065!2d95.43436780332014!3d5.398052035446534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040404ce6c22577%3A0x9b94c9e20a5ec9ce!2s9CXM%2B7Q2%2C%20Reukih%20Dayah%2C%20Kec.%20Indrapuri%2C%20Kabupaten%20Aceh%20Besar%2C%20Aceh%2023373!5e0!3m2!1sid!2sid!4v1770561527427!5m2!1sid!2sid" 
+     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
 
-  <select id="angkatanSelect">
-    <option value="">-- Pilih Angkatan --</option>
-    <option value="angkatan_25">Alumni 25</option>
-    <option value="angkatan_24">Alumni 24</option>
-    <option value="angkatan_23">Alumni 23</option>
-    <option value="angkatan_22">Alumni 22</option>
+  </div>
+</div>
+
+<!-- ABSENSI -->
+<div class="section">
+  <h2>Konfirmasi Kehadiran</h2>
+
+  <input type="text" id="nama" placeholder="Nama Lengkap">
+
+  <select id="angkatan">
+    <option value="">Pilih Angkatan</option>
+    <option>2025</option>
+    <option>2024</option>
+    <option>2023</option>
+    <option>2022</option>
+    <option>2021</option>
+    <option>2020</option>
+    <option>2019</option>
+    <option>2018</option>
+    <option>2017</option>
+    <option>2016</option>
+    <option>2015</option>
+    <option>2014</option>
+    <option>2013</option>
+    <option>2012</option>
+    <option>2011</option>
+    <option>2010</option>
+    <option>Gabungan Alumni 1990-2009</option>
   </select>
 
-  <div id="hadirBox" class="hidden">
-    <button id="btnHadir">Hadir</button>
-    <button id="btnTidakHadir">Tidak Hadir</button>
-  </div>
-
-  <div id="status"></div>
-
-  <div id="rekap" class="rekap hidden">
-    <p>Hadir: <span id="jumlahHadir">0</span></p>
-    <p>Tidak Hadir: <span id="jumlahTidakHadir">0</span></p>
-  </div>
-
-  <h3>Alamat Acara</h3>
-  <p id="alamatAcara">📍 Aula IKOED Banda Aceh</p>
-  <a href="https://maps.app.goo.gl/fYhjVy3XBMQz1u9d8" target="_blank">Lihat di Maps</a>
-
-  <h3>Ucapan</h3>
-  <p>Silahkan tulis ucapanmu di form ini (bisa ditambahkan nanti)</p>
+  <button class="absen" onclick="kirimAbsensi()">Kirim Absensi</button>
 </div>
 
-<!-- Tombol mute/unmute musik -->
-<button id="toggleMusic">🔊</button>
+<!-- GALERI -->
+<div class="section gallery">
+  <h2>Galeri Bukber Tahun Lalu</h2>
+  <img src="ikoed2.jpeg">
+  <img src="ikoed3.jpeg">
+</div>
 
-<script type="module" src="script.js"></script>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA-3KRZIlqWWIriG69k870i_s0p3Fb1vrY",
+  authDomain: "bukber-ikoed.firebaseapp.com",
+  databaseURL: "https://bukber-ikoed-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "bukber-ikoed",
+  storageBucket: "bukber-ikoed.firebasestorage.app",
+  messagingSenderId: "1048793981361",
+  appId: "1:1048793981361:web:3688383e06cd8418875d90",
+  measurementId: "G-ZWWY9N9C20"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+window.kirimAbsensi = function(){
+  if(localStorage.getItem("absen")){
+    alert("Sudah pernah isi absensi");
+    return;
+  }
+
+  const nama = document.getElementById("nama").value;
+  const angkatan = document.getElementById("angkatan").value;
+
+  push(ref(db,"absensi"),{
+    nama, angkatan,
+    waktu:new Date().toLocaleString()
+  });
+
+  localStorage.setItem("absen",true);
+  alert("Absensi terkirim");
+}
+
+window.bukaUndangan = function(){
+  document.getElementById("opening").style.display="none";
+  document.getElementById("content").style.display="block";
+}
+
+const target = new Date("March 7, 2026 18:50:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const sisa=target-now;
+
+  document.getElementById("hari").innerText=Math.floor(sisa/(1000*60*60*24));
+  document.getElementById("jam").innerText=Math.floor((sisa%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("menit").innerText=Math.floor((sisa%(1000*60*60))/(1000*60));
+  document.getElementById("detik").innerText=Math.floor((sisa%(1000*60))/1000);
+},1000);
+</script>
+
 </body>
 </html>
