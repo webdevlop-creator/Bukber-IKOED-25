@@ -9,88 +9,63 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
-body{background:#f4f4f4;overflow-x:hidden}
+body{background:#0f1720;color:white;overflow-x:hidden}
 
 /* OPENING */
 #opening{
 height:100vh;
-background:url('ikoed.jpeg') center/cover;
+background:url('ikoed.jpeg') center/cover no-repeat;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 text-align:center;
-color:#1b1b1b;
 position:fixed;
 width:100%;
-z-index:10;
+z-index:99;
+transition:1.2s;
 }
-#opening h1{
-font-family:Cinzel;
-font-size:32px;
-animation:fade 2s ease forwards;
-opacity:0;
-}
+#opening h1{font-family:Cinzel;font-size:34px;margin-bottom:10px}
 #opening button{
 margin-top:30px;
-padding:14px 28px;
-background:#2d4a2b;
-color:white;
+padding:14px 32px;
+background:#c8a96a;
+color:#000;
 border:none;
 border-radius:8px;
 font-size:16px;
 cursor:pointer;
 }
 
-@keyframes fade{
-to{opacity:1;transform:translateY(-10px)}
-}
-
 /* CONTENT */
-.content{
-display:none;
-}
-
 .section{
-  padding:80px 20px;
-  background:
-    linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
-    url('bg2.jpeg') center/cover;
-  text-align:center;
-  color:white;
+padding:90px 20px;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+url('bg2.jpeg') center/cover;
 }
 
-.section h2{
+h2{
 font-family:Cinzel;
+color:#f5d27a;
 margin-bottom:20px;
 }
 
-/* countdown */
-.countdown{
-display:flex;
-justify-content:center;
-gap:10px;
-margin-top:20px;
-}
-.box{
-background:#2d4a2b;
-color:white;
-padding:10px 14px;
-border-radius:6px;
-}
+.countdown{display:flex;justify-content:center;gap:12px;margin-top:20px}
+.box{background:#c8a96a;color:#000;padding:12px 16px;border-radius:8px}
 
-/* absensi */
 input,select{
 width:100%;
 padding:12px;
 margin:10px 0;
 border-radius:6px;
-border:1px solid #ccc;
+border:none;
 }
 
 button.absen{
-background:#2d4a2b;
-color:white;
+background:#c8a96a;
+color:#000;
 padding:12px;
 border:none;
 border-radius:6px;
@@ -98,19 +73,7 @@ width:100%;
 margin-top:10px;
 }
 
-.map{
-margin-top:20px;
-border-radius:10px;
-overflow:hidden;
-}
-
-.section h2{
-  font-family:'Cinzel',serif;
-  font-size:28px;
-  color:#f5d27a;
-  margin-bottom:20px;
-  letter-spacing:1px;
-}
+.map iframe{width:100%;height:300px;border:0;border-radius:10px}
 
 .gallery img{
 width:100%;
@@ -118,97 +81,86 @@ border-radius:10px;
 margin-top:10px;
 }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(30px);}
-  to{opacity:1; transform:translateY(0);}
-}
+.hide{display:none}
 </style>
 </head>
-
 <body>
 
 <!-- OPENING -->
 <div id="opening">
   <h1>Undangan Bukber IKOED</h1>
-  <p>Seluruh Alumni Mas Tgk. Chiek Oemar Diyan</p>
-  <button onclick="bukaUndangan()">Buka Undangan</button>
+  <p>Ikatan Alumni Mas Tgk. Chiek Oemar Diyan</p>
+  <button onclick="buka()">Buka Undangan</button>
 </div>
 
-<div class="content" id="content">
-
-<!-- HERO -->
+<!-- SALAM -->
 <div class="section">
-  <h2>Buka Puasa Bersama</h2>
-  <p>Sabtu, 07 Maret 2026</p>
+  <h2>Assalamu'alaikum Wr. Wb</h2>
+  <p>Dalam rangka mempererat tali silaturahmi, maka kami</p>
+  <p>mengundang seluruh keluarga besar Oemar Diyan untuk hadir</p>
+  <p>dalam acara buka bersama IKOED</p>
+</div>
 
+<!-- SUSUNAN ACARA -->
+<div class="section">
+  <h2>Susunan Acara</h2>
+  <p>></p>
+  <P></P>
+  <p></p>
+  <p></p>
+  <p></p>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="section">
+  <h2>Menuju Hari H</h2>
   <div class="countdown">
-    <div class="box"><span id="hari"></span> Hari</div>
-    <div class="box"><span id="jam"></span> Jam</div>
-    <div class="box"><span id="menit"></span> Menit</div>
-    <div class="box"><span id="detik"></span> Detik</div>
+    <div class="box"><span id="h"></span> Hari</div>
+    <div class="box"><span id="j"></span> Jam</div>
+    <div class="box"><span id="m"></span> Menit</div>
+    <div class="box"><span id="d"></span> Detik</div>
   </div>
 </div>
 
-<!-- LOKASI -->
+<!-- MAPS -->
 <div class="section">
   <h2>Lokasi Acara</h2>
   <div class="map">
-    <div style="border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.2); margin-top:20px;">
-  <!-- iframe maps di sini -->
-</div>
-    <iframe 
-     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d295.2298922176065!2d95.43436780332014!3d5.398052035446534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040404ce6c22577%3A0x9b94c9e20a5ec9ce!2s9CXM%2B7Q2%2C%20Reukih%20Dayah%2C%20Kec.%20Indrapuri%2C%20Kabupaten%20Aceh%20Besar%2C%20Aceh%2023373!5e0!3m2!1sid!2sid!4v1770561527427!5m2!1sid!2sid" 
-     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.25774467409346!2d95.43437511656666!3d5.398084684035918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040404ce6c22577%3A0x9b94c9e20a5ec9ce!2s9CXM%2B7Q2%2C%20Reukih%20Dayah%2C%20Kec.%20Indrapuri%2C%20Kabupaten%20Aceh%20Besar%2C%20Aceh%2023373!5e0!3m2!1sid!2sid!4v1770739548127!5m2!1sid!2sid"></iframe>
   </div>
 </div>
 
-<!-- ABSENSI -->
+<!-- GALERI -->
+<div class="section gallery">
+  <h2>Galeri Bukber</h2>
+  <img src="ikoed2.jpeg">
+  <img src="ikoed3.jpeg">
+</div>
+
+<!-- RSVP -->
 <div class="section">
   <h2>Konfirmasi Kehadiran</h2>
-  <p style="margin-bottom:15px;font-weight:500;">
-Silakan konfirmasi kehadiran sesuai angkatan masing-masing
-</p>
 
   <input type="text" id="nama" placeholder="Nama Lengkap">
 
   <select id="angkatan">
     <option value="">Pilih Angkatan</option>
-    <option>2025</option>
-    <option>2024</option>
-    <option>2023</option>
-    <option>2022</option>
-    <option>2021</option>
-    <option>2020</option>
-    <option>2019</option>
-    <option>2018</option>
-    <option>2017</option>
-    <option>2016</option>
-    <option>2015</option>
-    <option>2014</option>
-    <option>2013</option>
-    <option>2012</option>
-    <option>2011</option>
-    <option>2010</option>
-    <option>Gabungan Alumni 1990-2009</option>
   </select>
 
-  <button class="absen" onclick="kirimAbsensi()">Kirim Absensi</button>
-</div>
+  <select id="status" onchange="munculKeluarga()">
+    <option value="">Datang Sebagai</option>
+    <option value="sendiri">Sendiri</option>
+    <option value="keluarga">Bersama Keluarga</option>
+  </select>
 
-<!-- GALERI -->
-<div class="section gallery">
-  <h2>Galeri Bukber Tahun Lalu</h2>
-  <img src="ikoed2.jpeg">
-  <img src="ikoed3.jpeg">
-</div>
+  <input type="number" id="jumlah" class="hide" placeholder="Jumlah Keluarga Dibawa">
 
+  <button class="absen" onclick="kirim()">Kirim Absensi</button>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+import { getDatabase, ref, push, update } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA-3KRZIlqWWIriG69k870i_s0p3Fb1vrY",
@@ -224,45 +176,61 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-window.kirimAbsensi = function(){
-  if(localStorage.getItem("absen")){
-    alert("Sudah pernah isi absensi");
-    return;
-  }
+/* ANGKATAN AUTO */
+const select = document.getElementById("angkatan");
+for(let i=2026;i>=2010;i--){
+  let opt=document.createElement("option");
+  opt.value=i;
+  opt.text=i;
+  select.add(opt);
+}
+let opt=document.createElement("option");
+opt.value="1990-2009";
+opt.text="Gabungan Alumni 1990-2009";
+select.add(opt);
 
-  const nama = document.getElementById("nama").value;
-  const angkatan = document.getElementById("angkatan").value;
+/* SHOW INPUT KELUARGA */
+window.munculKeluarga=function(){
+  const s=document.getElementById("status").value;
+  document.getElementById("jumlah").classList.toggle("hide", s!=="keluarga");
+}
 
-  push(ref(db,"absensi"),{
-    nama, angkatan,
+/* KIRIM */
+window.kirim=function(){
+  const nama=nama.value;
+  const angkatan=angkatan.value;
+  const status=status.value;
+  const jumlah=status==="keluarga"?parseInt(jumlah.value):1;
+
+  const data={
+    nama,angkatan,status,jumlah,
     waktu:new Date().toLocaleString()
+  };
+
+  push(ref(db,'absensi/'+angkatan),data);
+
+  update(ref(db,'rekap/'+angkatan),{
+    total: jumlah
   });
 
-  localStorage.setItem("absen",true);
   alert("Absensi terkirim");
 }
 
-window.bukaUndangan = function(){
-  const opening = document.getElementById("opening");
-  opening.style.transition = "opacity 1.2s ease";
-  opening.style.opacity = "0";
-
-  setTimeout(()=>{
-    opening.style.display = "none";
-    document.getElementById("content").style.display = "block";
-    document.getElementById("content").style.animation = "fadeIn 1.5s ease";
-  },1200);
+/* OPENING */
+window.buka=function(){
+  document.getElementById("opening").style.opacity=0;
+  setTimeout(()=>{opening.style.display="none"},1200);
 }
 
-const target = new Date("March 7, 2026 18:50:00").getTime();
+/* COUNTDOWN */
+const target=new Date("March 7, 2026 18:50:00").getTime();
 setInterval(()=>{
   const now=new Date().getTime();
-  const sisa=target-now;
-
-  document.getElementById("hari").innerText=Math.floor(sisa/(1000*60*60*24));
-  document.getElementById("jam").innerText=Math.floor((sisa%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("menit").innerText=Math.floor((sisa%(1000*60*60))/(1000*60));
-  document.getElementById("detik").innerText=Math.floor((sisa%(1000*60))/1000);
+  const s=target-now;
+  h.innerText=Math.floor(s/86400000);
+  j.innerText=Math.floor((s%86400000)/3600000);
+  m.innerText=Math.floor((s%3600000)/60000);
+  d.innerText=Math.floor((s%60000)/1000);
 },1000);
 </script>
 
